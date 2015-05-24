@@ -1,0 +1,146 @@
+<resources>
+    <string name="app_name">BolsaTrabajo</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_rg12001">RG12001Activity</string>
+    <string name="title_activity_sb12002">SB12002Activity</string>
+    <string name="title_activity_grado_especializacion">GradoEspecializacionActivity</string>
+    <string name="title_activity_referencia">ReferenciaActivity</string>
+    <string name="title_activity_fb12001">FB12001Activity</string>
+
+    <!--  Strings de FB12001 -->
+    <string name="title_activity_cargo_menu">CargoMenuActivity</string>
+    <string name="title_activity_aplicacion_menu">AplicacionMenuActivity</string>
+    <string name="title_activity_aplicacion_insertar">AplicacionInsertarActivity</string>
+    <string name="title_activity_aplicacion_actualizar">AplicacionActualizarActivity</string>
+    <string name="title_activity_aplicacion_consultar">AplicacionConsultarActivity</string>
+    <string name="title_activity_aplicacion_eliminar">AplicacionEliminarActivity</string>
+    <string name="title_activity_cargo_insertar">CargoInsertarActivity</string>
+    <string name="title_activity_cargo_actualizar">CargoActualizarActivity</string>
+    <string name="title_activity_cargo_consultar">CargoConsultarActivity</string>
+    <string name="title_activity_cargo_eliminar">CargoEliminarActivity</string>
+    <string name="nombreCargof">Cargo:</string>
+    <string name="descripcionCargof">Descripción:</string>
+    <string name="fechaAplicacionf">Fecha</string>
+    <string name="estadoAplicacionf">Estado</string>
+    <string name="idCargof">Id Cargo</string>
+    <string name="idAplicacionf">Id Aplicacion</string>
+    <string name="idOfertaLaboralf">Id Oferta Laboral</string>
+    <string name="opciones">Opciones:</string>
+    <string name="insertar">Insertar</string>
+    <string name="limpiar">Limpiar</string>
+    <string name="eliminar">Eliminar</string>
+    <string name="modificarAplif">Modificar Aplicacion</string>
+    <string name="modificarCarf">Modificar Cargo</string>
+    <string name="spinnerEmpleado">Id Empleado</string>
+    <string name="spinnerOferta">Id oferta Laboral</string>
+    <string name="spinnerEmpresa">Id Empresa</string>
+    <string name="FB12001">Mónica Guadalupe Flores Bonilla © </string>
+    <style name="EstilosTextoFB"></style>
+    <style name="estiloBotonFB12001" parent="@style/EstilosTextoFB">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">#000</item>
+        <item name="android:textStyle">italic</item>
+
+    </style>
+
+    <!-- Fin de strings FB12001 -->
+    <!-- Strings SB12002 -->
+    <string name="idReferencia">N° de Referencia:</string>
+    <string name="idEmpleado">N° de Empleado:</string>
+    <string name="idEmpresa">ID Empresa:</string>
+    <string name="title_activity_referencia_insertar">ReferenciaInsertarActivity</string>
+    <string name="nombreReferencia">Nombre (Ref) :</string>
+    <string name="telefonoReferencia">Telefono (Ref) :</string>
+    <string name="title_activity_referencia_eliminar">ReferenciaEliminarActivity</string>
+    <string name="title_activity_referencia_consultar">ReferenciaConsultarActivity</string>
+    <string name="title_activity_referencia_modificar">ReferenciaModificarActivity</string>
+    <string name="title_activity_grado_especializacion_insertar">GradoEspecializacionInsertarActivity</string>
+
+    <string name="title_activity_grado_especializacion_eliminar">GradoEspecializacionEliminarActivity</string>
+    <string name="title_activity_grado_especializacion_consultar">GradoEspecializacionConsultarActivity</string>
+    <string name="title_activity_grado_especializacion_modificar">GradoEspecializacionModificarActivity</string>
+    <string name="tvTablaReferencia">Tabla Referencia</string>
+    <string name="tvTablaGradoEspecializacion">Tabla Grado/Especializacion</string>
+    <string name="idEspecializacion">ID Especialización:</string>
+    <string name="idInstituto">ID Instituto de Estudio:</string>
+    <string name="nombreEspecializacion">Nombre de Especialización:</string>
+    <string name="duracionEspec">Duracion de la Especialización:</string>
+    <string name="consultar">Consultar</string>
+    <!-- fin strings-->
+    <!-- strings FR12001-->
+    <string name="empleado">Empleado</string>
+    <string name="nombreEmpleado">Nombre: </string>
+    <string name="duiEmpleado">Dui: </string>
+    <string name="sexoEmpleado">Sexo: </string>
+    <string name="sexoF">F</string>
+    <string name="sexoM">M</string>
+    <string name="edadEmpleado">Edad: </string>
+    <string name="direccionEmpleado">Direccion: </string>
+    <string name="telefonoEmpleado">Telefono: </string>
+    <string name="cantAplicacionesEmpleado">Aplicaciones que sigues: </string>
+    <string name="cantReferenciasEmpleado">Referencias: </string>
+    <string name="title_activity_empleado_consultar">EmpleadoConsultarActivity</string>
+    <string name="title_activity_empleado_actualizar">EmpleadoActualizarActivity</string>
+    <string name="title_activity_empleado_eliminar">EmpleadoEliminarActivity</string>
+    <string name="title_activity_exp_laboral_insertar">ExpLaboralInsertarActivity</string>
+    <string name="title_activity_exp_laboral_consultar">ExpLaboralConsultarActivity</string>
+    <string name="title_activity_exp_laboral_modificar">ExpLaboralModificarActivity</string>
+    <string name="title_activity_exp_laboral_eliminar">ExpLaboralEliminarActivity</string>
+    <string name="consultarIdEmpleado">Ingrese el N° de Empleado que se le asigno: </string>
+    <string name="modificarEmpleado">Modificar este Empleado</string>
+    <string name="eliminarEmpleado">Eliminar este empleado</string>
+    <string name="actualizarDatos">Actualizar Datos</string>
+    <string name="title_activity_fr12001">FR12001Activity</string>
+    <string name="title_activity_empleado">EmpleadoActivity</string>
+    <string name="title_activity_experiencia_laboral">ExperienciaLaboralActivity</string>
+    <string name="title_activity_empleado_insertar">EmpleadoInsertarActivity</string>
+    <string name="idEmpleadoExpLab">Proporcione su empleado[ID]: </string>
+    <string name="idEmpresaExpLab">Proporcione el ID de Empresa: </string>
+    <string name="idCargoExpLab">Proporcione el ID del Cargo: </string>
+    <string name="insertarEL">Ingresar Mi experiencia Laboral</string>
+    <string name="duracionExpLab">Ingrese la duracion(en meses): </string>
+    <string name="idExpLab">Ingrese el ID de Experiencia Laboral:</string>
+    <string name="eliminarEL">Eliminar esta Experiencia Laboral</string>
+    <style name="EstilosTexto"></style>
+    <style name="estilosMariaJose" parent="@style/EstilosTexto">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">#FFF</item>
+        <item name="android:textStyle">italic</item>
+        <item name="android:background">#009966</item>
+    </style>
+    <string name="autor">Realizado por: Maria Jose Flores Ramos</string>
+    <!--fin Strings FR12001-->
+    <!--Inicio RG12001-->
+    <string name="title_activity_oferta_laboral">OfertaLaboralActivity</string>
+    <string name="title_activity_institucion_educacion">InstitucionEducacionActivity</string>
+    <string name="title_activity_oleliminar">OLEliminarActivity</string>
+    <string name="title_activity_olactualizar">OLActualizarActivity</string>
+    <string name="title_activity_olconsultar">OLConsultarActivity</string>
+    <string name="title_activity_olinsertar">OLInsertarActivity</string>
+    <string name="title_activity_ieinsertar">IEInsertarActivity</string>
+    <string name="title_activity_ieconsultar">IEConsultarActivity</string>
+    <string name="title_activity_ieeliminar">IEEliminarActivity</string>
+    <string name="title_activity_ieactualizar">IEActualizarActivity</string>
+    <string name="title_activity_llenar_base">LlenarBaseActivity</string>
+    <!--fin RG12001-->
+
+   
+    <string name="title_activity_oferta_laboral_actualizar">OfertaLaboralActualizarActivity</string>
+    <string name="title_activity_oferta_laboral_eliminar">OfertaLaboralEliminarActivity</string>
+    <string name="title_activity_oferta_laboral_consultar">OfertaLaboralConsultarActivity</string>
+    <string name="title_activity_oferta_laboral_crear">OfertaLaboralCrearActivity</string>
+    <string name="title_activity_institucion_educacion_crear">InstitucionEducacionCrearActivity
+    </string>
+    <string name="title_activity_institucion_educacion_consultar">
+        InstitucionEducacionConsultarActivity
+    </string>
+    <string name="title_activity_institucion_educacion_actualizar">
+        InstitucionEducacionActualizarActivity
+    </string>
+    <string name="title_activity_institucion_educacion_eliminar">
+        InstitucionEducacionEliminarActivity
+    </string>
+    <string name="actualizar">Actualizar</string>
+</resources>

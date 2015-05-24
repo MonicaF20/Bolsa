@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:paddingTop="30dip"
+    android:stretchColumns="1"
+    android:background="#ffc6baff">
+    <TableRow>
+        <TextView android:text="@string/spinnerEmpleado"/>
+        <Spinner android:id="@+id/editSpinnerEmpleado"
+            android:layout_height="wrap_content"
+            android:layout_width="fill_parent" />
+
+    </TableRow>
+    <TableRow>
+        <TextView android:text="@string/spinnerEmpresa"/>
+        <Spinner android:id="@+id/editSpinnerEmpresa"
+            android:layout_height="wrap_content"
+            android:layout_width="fill_parent" />
+        <!--android:prompt="@string/"-->
+    </TableRow>
+    <TableRow>
+        <TextView android:text="@string/spinnerOferta"/>
+        <Spinner android:id="@+id/editSpinnerOferta"
+            android:layout_height="wrap_content"
+            android:layout_width="fill_parent" />
+    </TableRow>
+    <TableRow>
+        <TextView android:text="@string/fechaAplicacionf"/>
+        <EditText
+            android:id="@+id/editFechaAplicacionf"
+            android:inputType="date"
+            android:maxLength="10"
+            android:hint="DD/MM/AA"/>
+    </TableRow>
+    <TableRow>
+        <TextView android:text="@string/estadoAplicacionf" />
+        <EditText
+            android:id="@+id/editEstadoAplicacionf"
+            android:inputType="text"
+            android:maxLength="30" />
+    </TableRow>
+
+    <TableRow>
+        <TextView android:text="@string/opciones" />
+    </TableRow>
+    <TableRow>
+        <Button
+            android:onClick="insertarAplicacion"
+            android:text="@string/insertar"
+            android:textAppearance="@style/estiloBotonFB12001"/>
+        <Button
+            android:onClick="limpiarTexto"
+            android:text="@string/limpiar"
+            android:textAppearance="@style/estiloBotonFB12001"/>
+    </TableRow>
+    <LinearLayout>
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/FB12001" />
+    </LinearLayout>
+</TableLayout>
