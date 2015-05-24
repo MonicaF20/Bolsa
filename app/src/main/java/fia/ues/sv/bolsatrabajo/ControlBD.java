@@ -652,7 +652,7 @@ public class ControlBD {
 
         String regDelete="Referencias Eliminadas= ";
         int cont=0;
-        cont=db.delete("REFERENCIA","ID_REFERENCIA='"+referencia.getId_referencia()+"'",null);
+        cont=db.delete("REFERENCIA","ID_REFERENCIA='"+referencia.getId_referencia()+"'  and ID_EMPLEADO= '"+referencia.getId_empleado()+"'",null);
         return regDelete+=cont;
 
         }
@@ -676,7 +676,11 @@ public class ControlBD {
 
     public Referencia consultarReferencia(String idReferencia,String idEmpelado){
         String[] id={idReferencia,idEmpelado};
+
         Cursor cursor=db.query("REFERENCIA",camposReferencia,"ID_REFERENCIA= ? and ID_EMPLEADO= ?",id,null,null,null);
+
+
+
 
         if(cursor.moveToFirst()){
             Referencia referencia=new Referencia();

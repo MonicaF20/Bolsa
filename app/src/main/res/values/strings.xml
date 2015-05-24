@@ -66,7 +66,7 @@
     <string name="idEspecializacion">ID Especialización:</string>
     <string name="idInstituto">ID Instituto de Estudio:</string>
     <string name="nombreEspecializacion">Nombre de Especialización:</string>
-    <string name="duracionEspec">Duracion de la Especialización:</string>
+    <string name="duracionEspec">Duracion de la Especialización (meses):</string>
     <string name="consultar">Consultar</string>
     <!-- fin strings-->
     <!-- strings FR12001-->
@@ -143,4 +143,5 @@
         InstitucionEducacionEliminarActivity
     </string>
     <string name="actualizar">Actualizar</string>
+    <string name="autorEduardo">Eduardo Rafael ®</string>
 </resources>
