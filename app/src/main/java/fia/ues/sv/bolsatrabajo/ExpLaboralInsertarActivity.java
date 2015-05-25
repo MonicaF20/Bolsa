@@ -119,20 +119,22 @@ public class ExpLaboralInsertarActivity extends Activity implements AdapterView.
 
     }
 
-    public void insertarExpLab(View v){
+    public void insertarExpLab(View v) {
         String res;
         helper.abrir();
-        Empleado empleado=helper.consultarEmpleado(idEmpleadoEL.getText().toString());
-        if(empleado==null)
-        {Toast.makeText(this,"EL EMPLEADO "+idEmpleadoEL.getText().toString()+" NO EXISTE",Toast.LENGTH_LONG).show();
+        Empleado empleado = helper.consultarEmpleado(idEmpleadoEL.getText().toString());
+        if (empleado == null) {
+            Toast.makeText(this, "EL EMPLEADO " + idEmpleadoEL.getText().toString() + " NO EXISTE", Toast.LENGTH_LONG).show();
+        } else {
+            if (duracionExpLab.getText().toString().length() == 0) {
+                Toast.makeText(this, "INGRESE TODOS LOS DATOS", Toast.LENGTH_LONG).show();
+            }else   {
+                res=helper.insertarExpLab(idEmpleadoEL.getText().toString(),resultadoEmpresa,resultadoCargo,duracionExpLab.getText().toString());
+                Toast.makeText(this,res,Toast.LENGTH_LONG).show();}
+            helper.cerrar();
         }
-        if(duracionExpLab.getText().toString().length()==0)
-        {Toast.makeText(this,"INGRESE TODOS LOS DATOS",Toast.LENGTH_LONG).show();}
-        else   {
-            res=helper.insertarExpLab(idEmpleadoEL.getText().toString(),resultadoEmpresa,resultadoCargo,duracionExpLab.getText().toString());
-            Toast.makeText(this,res,Toast.LENGTH_LONG).show();}
-    helper.cerrar();
-    }
+        }
+
     public void obtenerNombreEmpresa(View v){
         helper.abrir();
         String res= helper.recuperarNombreEmpresa(resultadoEmpresa);
