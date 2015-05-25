@@ -33,10 +33,17 @@ public class ReferenciaModificarActivity extends ActionBarActivity {
         referencia.setId_empresa(Integer.parseInt(editIdEmpresa.getText().toString()));
         referencia.setNombre_referencia(editNombreReferencia.getText().toString());
         referencia.setTelefono_referencia(editTelefonoReferencia.getText().toString());
-        helper.abrir();
-        String estate=helper.modificar(referencia);
-        helper.cerrar();
-        Toast.makeText(this,estate,Toast.LENGTH_SHORT).show();
+
+//        if(helper.verificarIntegridad(referencia,3)){
+            helper.abrir();
+            String estate=helper.modificar(referencia);
+            helper.cerrar();
+            Toast.makeText(this,estate,Toast.LENGTH_SHORT).show();
+  //      }
+    /*    else {
+            Toast.makeText(this, "Error No existe esa referencia", Toast.LENGTH_SHORT).show();
+        }*/
+
     }
     public void limpiarTexto(View view){
         editIdEmpleado.setText("");

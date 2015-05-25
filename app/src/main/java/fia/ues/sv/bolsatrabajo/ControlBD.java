@@ -29,7 +29,8 @@ public class ControlBD {
     private static final String[] camposCargo = new String[]{"ID_CARGO","NOMBRE_CARGO","DESCRIPCION_CARGO"};
     private static final String[] camposAplicacion = new String[]{"ID_APLICACION","ID_EMPLEADO","ID_OFERTALABORAL","ID_EMPRESA","FECHA_APLICACION","ESTADO_APLICACION"};
     private static final String[] camposEmpresaCar= new String[]{"ID_EMPRESA","NOMBRE_EMPRESA","NIT_EMPRESA","DIR_EMPRESA","TEL_EMPRESA","CANTOFERTAS_EMPRESA"};
-
+    public static String[] camposInsEdu={"ID_INSTITUTOESTUDIO","NOMBRE_INSTITUTOESTUDIO", "DEPARTAMENTO_INSTITUTOESTUDIO"};
+    public static String[] camposOfeLab={"ID_OFERTALABORAL","ID_EMPRESA", "ID_CARGO","FECHAPUBLICACION_OFERTALABORAL","FECHAEXPIRACION_OFERTALABORAL"};
   //fin fb12001
 
     private final Context context;
@@ -75,7 +76,7 @@ public class ControlBD {
             String sqlCreateEmp="create table EMPRESA(ID_EMPRESA integer not null primary key autoincrement, NOMBRE_EMPRESA varchar(50) not null, NIT_EMPRESA varchar(25) not null, DIR_EMPRESA varchar(50) not null, TEL_EMPRESA varchar(10), CANTOFERTAS_EMPRESA  integer not null);";
             String sqlCreateExpLab="create table EXPERIENCIALABORAL(ID_EXPERIENCIALABORAL integer not null primary key autoincrement , ID_EMPLEADO  integer not null, ID_EMPRESA integer not null, ID_CARGO integer not null, DURACION_EXPERIENCIALABORAL integer not null);";
             String sqlCreateGraEsp="create table GRADOESPECIALIZACION(ID_ESPECIALIZACION integer not null, ID_INSTITUTOESTUDIO  integer, NOMBRE_ESPECIALIZACION varchar(50) not null, DURACION_ESPECIALIZACION integer,primary key (ID_ESPECIALIZACION,ID_INSTITUTOESTUDIO));";
-            String sqlCreateInsEst="create table INSTITUTOESTUDIO(ID_INSTITUTOESTUDIO integer not null, NOMBRE_INSTITUTOESTUDIO varchar(100) not null, MUNICIPIO_INSTITUTOESTUDIO varchar(30) not null, DEPARTAMENTO_INSTITUTOESTUDIO varchar(30) not null, primary key (ID_INSTITUTOESTUDIO));";
+            String sqlCreateInsEst="create table INSTITUTOESTUDIO(ID_INSTITUTOESTUDIO integer not null, NOMBRE_INSTITUTOESTUDIO varchar(100) not null, DEPARTAMENTO_INSTITUTOESTUDIO varchar(30) not null, primary key (ID_INSTITUTOESTUDIO));";
             String sqlCreateOfeLab="create table OFERTALABORAL(ID_OFERTALABORAL integer not null, ID_EMPRESA integer not null, ID_CARGO integer not null, FECHAPUBLICACION_OFERTALABORAL varchar(30) not null, FECHAEXPIRACION_OFERTALABORAL varchar(30) not null, primary key (ID_OFERTALABORAL,ID_EMPRESA));";
             String sqlCreateRef="create table REFERENCIA(ID_REFERENCIA integer not null, ID_EMPLEADO integer, ID_EMPRESA integer, NOMBRE_REFERENCIA varchar(50) not null, TELEFONO_REFERENCIA varchar(10) not null, primary key (ID_REFERENCIA,ID_EMPLEADO));";
             String sqlTrigger=
@@ -183,7 +184,6 @@ public class ControlBD {
         final int[] idsAplicacionTodos={1,2,3,4};
         final String[] fechaAplicacion={"23/05/15","13/05/15","20/05/15","24/05/15"};
         final String[] estadoAplicacion={"Aceptada","Aceptada","En Proceso","En Proceso"};
-        //Vectoress tabla Edgardo
 
         //Vectores tabla Eduardo
         final int[] gradoEspeIdSpe={1,2,3,4};
@@ -196,6 +196,15 @@ public class ControlBD {
         final String[] referencePhone={"22002200","77777777","22222222","225777777"};
         final int[] referenceIdEmple={1,2,3,4};
         final int[] referenceIdBusiness={1,2,3,4};
+        //Vectoress tabla Edgardo
+        final int[] ofertaIdTodos={1,2,3,4};
+        final String[] ofertaFechaPubli={"23/05/15","13/05/15","20/05/15","24/05/15"};
+        final String [] ofertaFechaExpi={"23/06/15","13/06/15","20/06/15","24/06/15"};
+
+        final int[] institutoId={1,2,3,4};
+        final String[] institutoNom={"UES","UCA","ESEN","UFG"};
+        final String[] institutoDepart={"SAN SALVADOR","SAN SALVADOR","SAN SALVADOR","SAN SALVADOR"};
+
 
        /*------EMPIEZA LA INSERCION ---*/
         for (int i = 0; i < 4; i++) {
@@ -254,7 +263,6 @@ public class ControlBD {
             refe.setId_referencia(referenceId[i]);
             insertar(refe);
 
-
             //tabla GradoEspecializacion
 
             GradoEspecializacion grade=new GradoEspecializacion();
@@ -263,6 +271,20 @@ public class ControlBD {
             grade.setId_institutoEstudio(gradoEspeIdInsti[i]);
             grade.setDuracion_especializacion(gradoEspeDuration[i]);
             insertar(grade);
+            //tabla oferta
+            OfertaLaboral oferta =new OfertaLaboral();
+            oferta.setIdOL(ofertaIdTodos[i]);
+            oferta.setIdEmp(ofertaIdTodos[i]);
+            oferta.setIdCar(ofertaIdTodos[i]);
+            oferta.setFechaP(ofertaFechaPubli[i]);
+            oferta.setFechaX(ofertaFechaExpi[i]);
+            insertar(oferta);
+
+            InstitucionEducacion insti = new InstitucionEducacion();
+            insti.setIdIE(institutoId[i]);
+            insti.setNombreIE(institutoNom[i]);
+            insti.setDeptoIE(institutoDepart[i]);
+            insertarIE(insti);
 
 
         }//fin for
@@ -648,6 +670,7 @@ public class ControlBD {
 
         return ids;
     }
+
     public List<String> recuperarEmpresa(){
         List<String> idem=new ArrayList<String>();
         Cursor cursor=db.rawQuery("Select ID_EMPRESA from EMPRESA",null);
@@ -668,7 +691,8 @@ public class ControlBD {
 
     public List<String> recuperarOferta(){
         List<String> idem=new ArrayList<String>();
-        Cursor cursor =db.query("cargo",camposCargo,null,null,null,null,null);//para probar esta con la tabla cargo , cambiar a la tabla ofertalaboraL  despues
+        //Cursor cursor =db.query("cargo",camposCargo,null,null,null,null,null);//para probar esta con la tabla cargo , cambiar a la tabla ofertalaboraL  despues
+        Cursor cursor=db.rawQuery("Select ID_OFERTALABORAL from OFERTALABORAL",null);
         if(cursor.moveToFirst()){
             do{
                 idem.add(cursor.getString(0));
@@ -682,10 +706,6 @@ public class ControlBD {
         return idem;
     }
     // FIN CRUD FB12001****************************************************************
-
-
-
-
 
 
     public String insertar(Referencia referencia){
@@ -716,7 +736,7 @@ public class ControlBD {
 
         String regDelete="Referencias Eliminadas= ";
         int cont=0;
-        cont=db.delete("REFERENCIA","ID_REFERENCIA='"+referencia.getId_referencia()+"'",null);
+        cont=db.delete("REFERENCIA","ID_REFERENCIA='"+referencia.getId_referencia()+"'  and ID_EMPLEADO= '"+referencia.getId_empleado()+"'",null);
         return regDelete+=cont;
 
         }
@@ -740,7 +760,11 @@ public class ControlBD {
 
     public Referencia consultarReferencia(String idReferencia,String idEmpelado){
         String[] id={idReferencia,idEmpelado};
+
         Cursor cursor=db.query("REFERENCIA",camposReferencia,"ID_REFERENCIA= ? and ID_EMPLEADO= ?",id,null,null,null);
+
+
+
 
         if(cursor.moveToFirst()){
             Referencia referencia=new Referencia();
@@ -830,7 +854,7 @@ public class ControlBD {
 
         switch (relacion) {
             case 1: {
-                //Verificar que al insertar una relacion, exista el empleado y la empresa de referencia y ademas que no exista esa referencia
+                //Verificar que al insertar una referencia, exista el empleado y la empresa de referencia y ademas que no exista esa referencia
                 Referencia referencia=(Referencia)dato;
                 String id[]={String.valueOf(referencia.getId_empleado())};
                 String id2[]={String.valueOf(referencia.getId_empresa())};
@@ -866,11 +890,14 @@ public class ControlBD {
             {
                 //verificar que al actualizar la Referencia exista y el empleado este asociado a esa referencia
                 Referencia referencia=(Referencia)dato;
+                System.out.println(referencia.getId_empleado());
                 String id[]={String.valueOf(referencia.getId_empleado())};
                 String id2[]={String.valueOf(referencia.getId_referencia())};
 
-                Cursor cursor1=db.query("REFERENCIA",null,"ID_EMPLEADO=?",id,null,null,null);
-                Cursor cursor2=db.query("REFERENCIA",null,"ID_REFERENCIA=?",id2,null,null,null);
+                Cursor cursor1=db.query("REFERENCIA",null,"ID_EMPLEADO= '"+referencia.getId_empleado()+"'",null,null,null,null);
+
+
+                Cursor cursor2=db.query("REFERENCIA",camposReferencia,"ID_REFERENCIA=?",id2,null,null,null);
 
                 if(cursor1.moveToFirst()&cursor2.moveToFirst()){ //aqui solo unse un "&"
                     return true;
@@ -891,6 +918,7 @@ public class ControlBD {
                 Cursor cursor1=db.query("INSTITUTOESTUDIO",null,"ID_INSTITUTOESTUDIO=?",id,null,null,null);
 
 
+
                 if(cursor1.moveToFirst()){ //aqui solo unse un "&"
                     return true;
 
@@ -907,5 +935,139 @@ public class ControlBD {
         }
 
         }
+
+    /*METODOS CRUD RG120001*/
+    public String insertarIE(InstitucionEducacion IE){
+        String insercion="ID creado para "+IE.getNombreIE()+": ";
+        long cont=0;
+        ContentValues ins = new ContentValues();
+        //ins.put("ID_INSTITUTOESTUDIO",IE.getIdIE());
+        ins.put("NOMBRE_INSTITUTOESTUDIO",IE.getNombreIE());
+        ins.put("DEPARTAMENTO_INSTITUTOESTUDIO",IE.getDeptoIE());
+        cont = db.insert("INSTITUTOESTUDIO",null,ins);
+        if(cont == -1 || cont==0){
+            insercion="Error al insertar registro";
+        }else{
+            insercion=insercion+cont;
+        }
+        return insercion;
+    }
+    public InstitucionEducacion consultar(InstitucionEducacion ie) {
+        Integer id =ie.getIdIE();
+        String[] x = {id.toString()};
+        Cursor cursor = db.query("INSTITUTOESTUDIO",camposInsEdu,"ID_INSTITUTOESTUDIO = ?",x,null,null,null);
+        if (cursor.moveToFirst()){
+            ie.setNombreIE(cursor.getString(1));
+            ie.setDeptoIE(cursor.getString(2));
+            return ie;
+        }
+        else{return null;}
+    }
+    public String eliminar(InstitucionEducacion ie){
+        String res="¡Registro eliminado con éxito!";
+        Integer x = ie.getIdIE();
+        String[] id ={x.toString()};
+        int c = db.delete("INSTITUTOESTUDIO","ID_INSTITUTOESTUDIO = ?",id);
+        return res;
+    }
+    public String actualizar(InstitucionEducacion ie){
+        long cont=0;
+        Integer id = ie.getIdIE();
+        String[] x = {id.toString()};
+        String res="Institución actualizada con éxito";
+        ContentValues ins = new ContentValues();
+        ins.put("NOMBRE_INSTITUTOESTUDIO",ie.getNombreIE());
+        ins.put("DEPARTAMENTO_INSTITUTOESTUDIO",ie.getDeptoIE());
+        cont = db.update("INSTITUTOESTUDIO",ins,"ID_INSTITUTOESTUDIO = ? ",x);
+        if(cont == -1 || cont==0)
+            res="Error, institución no fue modificada";
+        return res;
+    }
+    public String insertar(OfertaLaboral ol) {
+        String res="ID creado para esta Oferta Laboral: ";
+        long cont=0;
+        ContentValues of = new ContentValues();
+        int x=getLastID("OFERTALABORAL");//El ultimo id
+        of.put("ID_OFERTALABORAL",x+1);
+        of.put("ID_EMPRESA",ol.getIdEmp());
+        of.put("ID_CARGO",ol.getIdCar());
+        of.put("FECHAPUBLICACION_OFERTALABORAL",ol.getFechaP());
+        of.put("FECHAEXPIRACION_OFERTALABORAL",ol.getFechaX());
+        cont = db.insert("OFERTALABORAL", null, of);
+        if(cont == -1 || cont==0){
+            res="Error al insertar registro";
+        }else{
+            res=res+of.get("ID_OFERTALABORAL");
+        }
+        return res;
+    }
+    private int getLastID(String tabla) {
+        String MY_QUERY = "SELECT MAX(ID_OFERTALABORAL) FROM " + tabla;
+        Cursor c = db.rawQuery(MY_QUERY, null);
+        c.moveToFirst();
+        int id = c.getInt(0);
+        c.close();
+        //if(id==0){id=1;};
+        return id;
+    }
+    public OfertaLaboral consultar(OfertaLaboral ol) {
+        Integer id =ol.getIdOL();
+        String[] x = {id.toString()};
+        Cursor cursor = db.query("OFERTALABORAL",camposOfeLab,"ID_OFERTALABORAL = ?",x,null,null,null);
+        if (cursor.moveToFirst()){
+            ol.setIdEmp(cursor.getInt(1));
+            ol.setIdCar(cursor.getInt(2));
+            ol.setFechaP(cursor.getString(3));
+            ol.setFechaX(cursor.getString(4));
+            return ol;
+        }
+        else{return null;}
+    }
+    public String eliminar(OfertaLaboral ol) {
+        String res="¡Registro eliminado con éxito!";
+        Integer x = ol.getIdOL();
+        String[] id ={x.toString()};
+        int c = db.delete("OFERTALABORAL","ID_OFERTALABORAL = ?",id);
+        return res;
+    }
+    public String actualizar(OfertaLaboral ol) {
+        String res ="Oferta Laboral "+ol.getIdOL()+" fue modificada con éxito";
+        long cont=0;
+        ContentValues of = new ContentValues();
+        Integer ent = ol.getIdOL();
+        String[] x = {ent.toString()};
+        of.put("ID_EMPRESA",ol.getIdEmp());
+        of.put("ID_CARGO",ol.getIdCar());
+        of.put("FECHAPUBLICACION_OFERTALABORAL",ol.getFechaP());
+        of.put("FECHAEXPIRACION_OFERTALABORAL",ol.getFechaX());
+        cont = db.update("OFERTALABORAL",of,"ID_OFERTALABORAL = ? ",x);
+        if(cont == -1 || cont==0)
+            res="Error, no fue modificado";
+        return res;
+    }
+    public boolean valEmp(String idEmp) {
+        String[] x = {idEmp};
+        //String[] campos ={"ID_EMPRESA","NOMBRE_EMPRESA","NIT_EMPRESA","DIR_EMPRESA","TEL_EMPRESA","CANTOFERTAS_EMPRESA"};
+        //Cursor cursor = db.query("EMPRESA",campos,"ID_EMPRESA = ?",x,null,null,null);
+        Cursor cursor = db.rawQuery("SELECT * FROM EMPRESA WHERE ID_EMPRESA = ?",x);
+        if (cursor.moveToFirst()){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    public boolean valCar(String idCar) {
+        String[] x = {idCar};
+        Cursor cursor = db.rawQuery("SELECT * FROM CARGO WHERE ID_CARGO = ?",x);
+        if (cursor.moveToFirst()){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    /*FIN RG12001*/
+
+
+
     }
 

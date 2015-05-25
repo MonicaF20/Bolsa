@@ -110,6 +110,7 @@ public class AplicacionInsertarActivity extends Activity implements AdapterView.
                 break;
             case R.id.editSpinnerOferta:
                 String resultadoOferta=parent.getItemAtPosition(position).toString();
+
                 idOferta=Integer.parseInt(resultadoOferta);
                 //Toast.makeText(this,"oferta laboral"+resultadoOferta,Toast.LENGTH_SHORT).show();
 

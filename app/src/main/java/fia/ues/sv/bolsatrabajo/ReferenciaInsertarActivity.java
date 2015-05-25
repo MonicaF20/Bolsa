@@ -36,10 +36,14 @@ public class ReferenciaInsertarActivity extends ActionBarActivity {
         if(editReferencia.getText()==null || editIdEmpleado.getText()==null){
             Toast.makeText(this,"Debe ingresar El Id de la referencia y el Id del empleado",Toast.LENGTH_SHORT).show();
         }else{
+
             Referencia referencia=new Referencia(idReferencia,idEmpleado,idEmpresa,nomReferencia,telReferencia);
-            helper.abrir();
-            String regInsert=helper.insertar(referencia);
-            Toast.makeText(this,regInsert,Toast.LENGTH_SHORT).show();
+           // if(helper.verificarIntegridad(referencia,1)){
+                helper.abrir();
+                String regInsert=helper.insertar(referencia);
+                Toast.makeText(this,regInsert,Toast.LENGTH_SHORT).show();
+            //}
+
         }
 
     }

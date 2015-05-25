@@ -66,7 +66,7 @@
     <string name="idEspecializacion">ID Especialización:</string>
     <string name="idInstituto">ID Instituto de Estudio:</string>
     <string name="nombreEspecializacion">Nombre de Especialización:</string>
-    <string name="duracionEspec">Duracion de la Especialización:</string>
+    <string name="duracionEspec">Duracion de la Especialización (meses):</string>
     <string name="consultar">Consultar</string>
     <!-- fin strings-->
     <!-- strings FR12001-->
@@ -111,6 +111,7 @@
         <item name="android:background">#009966</item>
     </style>
     <string name="autor">Realizado por: Maria Jose Flores Ramos</string>
+    <string name="title_activity_llenar_base">LlenarBaseActivity</string>
     <!--fin Strings FR12001-->
     <!--Inicio RG12001-->
     <string name="title_activity_oferta_laboral">OfertaLaboralActivity</string>
@@ -123,24 +124,63 @@
     <string name="title_activity_ieconsultar">IEConsultarActivity</string>
     <string name="title_activity_ieeliminar">IEEliminarActivity</string>
     <string name="title_activity_ieactualizar">IEActualizarActivity</string>
-    <string name="title_activity_llenar_base">LlenarBaseActivity</string>
+    <string name="miCarnetRG12001">RG12001</string>
+    <string name="nomTablaIE">Tabla Institución Educación</string>
+    <string name="nomTablaOL">Tabla OfertaLaboral</string>
+    <string name="nombreIE">Nombre de la Institución:</string>
+    <string name="municipioIE">Municipio:</string>
+    <string name="departamentoIE">Departamento:</string>
+    <string name="opInsertar">INSERTAR</string>
+    <string name="opEliminar">ELIMINAR</string>
+    <string name="opEditar">ACTUALIZAR</string>
+    <string name="opConsultar">CONSULTAR</string>
+    <string name="ingreseID">Ingrese ID:</string>
+    <string name="alerta">¡ALERTA!</string>
+    <string name="dialogo">¿Realmente desea continuar?</string>
+    <string name="opcCancelar">CANCELAR</string>
+    <string name="fechaPub">Fecha de publicación:</string>
+    <string name="fechaExp">Fecha de expiración:</string>
+    <string name="idCargo2">ID Cargo:</string>
+    <string name="idOL">Ingrese ID de la Oferta Laboral:</string>
+    <string name="helptxt"><u>Consulte aqui...</u></string>
+    <string name="indicacion1">dd/mm/aaaa</string>
+    <string name="indicacion2">Ingrese ID del cargo</string>
+
+
+    <style name="nomCampos" parent="@style/EstilosTexto">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">#FFF</item>
+        <item name="android:textStyle">italic</item>
+    </style>
+    <style name="camposAyuda" parent="@style/EstilosTexto">
+        <item name="android:textSize">8sp</item>
+        <item name="android:textColor">#ff0000ff</item>
+    </style>
+    <string-array name="spinnerDepartamentos">
+        <item>- - -</item>
+        <item>Ahuachapán</item>
+        <item>Cabañas</item>
+        <item>Chalatenango</item>
+        <item>Cuscatlán</item>
+        <item>La Libertad</item>
+        <item>La Paz</item>
+        <item>La Unión</item>
+        <item>Morazán</item>
+        <item>Santa Ana</item>
+        <item>San Miguel</item>
+        <item>San Salvador</item>
+        <item>San Vicente</item>
+        <item>Sonsonate</item>
+        <item>Usulután</item>
+    </string-array>
+
+    
     <!--fin RG12001-->
 
    
-    <string name="title_activity_oferta_laboral_actualizar">OfertaLaboralActualizarActivity</string>
-    <string name="title_activity_oferta_laboral_eliminar">OfertaLaboralEliminarActivity</string>
-    <string name="title_activity_oferta_laboral_consultar">OfertaLaboralConsultarActivity</string>
-    <string name="title_activity_oferta_laboral_crear">OfertaLaboralCrearActivity</string>
-    <string name="title_activity_institucion_educacion_crear">InstitucionEducacionCrearActivity
-    </string>
-    <string name="title_activity_institucion_educacion_consultar">
-        InstitucionEducacionConsultarActivity
-    </string>
-    <string name="title_activity_institucion_educacion_actualizar">
-        InstitucionEducacionActualizarActivity
-    </string>
-    <string name="title_activity_institucion_educacion_eliminar">
-        InstitucionEducacionEliminarActivity
-    </string>
+   
     <string name="actualizar">Actualizar</string>
+    
+    <string name="autorEduardo">Eduardo Rafael ®</string>
+    <string name="title_activity_empresa_consultar">EmpresaConsultarActivity</string>
 </resources>

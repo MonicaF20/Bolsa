@@ -19,4 +19,22 @@
         android:layout_height="wrap_content"
         android:text="@string/eliminar"
         android:onClick="eliminarGradoEspecAct"/>
+
+    <TextView
+        android:layout_height="43dp"
+        android:layout_width="fill_parent"
+        android:padding="10px"/>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/autorEduardo"
+        android:id="@+id/autorEduardo"
+        android:layout_centerHorizontal="true"
+        android:textAlignment="center"
+        android:textColor="#ff4d66ba"
+        android:theme="@android:style/Animation"
+        android:textSize="22dp" />
+
 </LinearLayout>
