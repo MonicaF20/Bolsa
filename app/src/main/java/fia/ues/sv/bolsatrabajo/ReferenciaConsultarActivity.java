@@ -34,6 +34,7 @@ public class ReferenciaConsultarActivity extends ActionBarActivity {
             Toast.makeText(this,"Referencia no encontrada.",Toast.LENGTH_SHORT).show();
         }
         else{
+
             editIdEmpleado.setText(String.valueOf(referencia.getId_empleado()));
             editIdEmpresa.setText(String.valueOf(referencia.getId_empresa()));
             editNombreReferencia.setText(String.valueOf(referencia.getNombre_referencia()));

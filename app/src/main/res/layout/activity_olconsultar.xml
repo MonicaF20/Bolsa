@@ -160,4 +160,27 @@
         android:layout_centerHorizontal="true"
         android:onClick="consultarOL"/>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/helptxt"
+        android:textAppearance="@style/camposAyuda"
+        android:id="@+id/textView14"
+        android:layout_alignTop="@+id/textView9"
+        android:layout_centerHorizontal="true"
+        android:onClick="helpEmp"
+        android:clickable="true"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/helptxt"
+        android:textAppearance="@style/camposAyuda"
+        android:id="@+id/textView15"
+        android:layout_above="@+id/textView11"
+        android:layout_alignLeft="@+id/editFechaPubOL"
+        android:layout_alignStart="@+id/editFechaPubOL"
+        android:onClick="helpCar"
+        android:clickable="true"/>
+
 </RelativeLayout>

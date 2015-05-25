@@ -148,7 +148,6 @@ public class ControlBD {
         final int[] idsAplicacionTodos={1,2,3,4};
         final String[] fechaAplicacion={"23/05/15","13/05/15","20/05/15","24/05/15"};
         final String[] estadoAplicacion={"Aceptada","Aceptada","En Proceso","En Proceso"};
-        //Vectoress tabla Edgardo
 
         //Vectores tabla Eduardo
         final int[] gradoEspeIdSpe={1,2,3,4};
@@ -161,6 +160,15 @@ public class ControlBD {
         final String[] referencePhone={"22002200","77777777","22222222","225777777"};
         final int[] referenceIdEmple={1,2,3,4};
         final int[] referenceIdBusiness={1,2,3,4};
+        //Vectoress tabla Edgardo
+        final int[] ofertaIdTodos={1,2,3,4};
+        final String[] ofertaFechaPubli={"23/05/15","13/05/15","20/05/15","24/05/15"};
+        final String [] ofertaFechaExpi={"23/06/15","13/06/15","20/06/15","24/06/15"};
+
+        final int[] institutoId={1,2,3,4};
+        final String[] institutoNom={"UES","UCA","ESEN","UFG"};
+        final String[] institutoDepart={"SAN SALVADOR","SAN SALVADOR","SAN SALVADOR","SAN SALVADOR"};
+
 
        /*------EMPIEZA LA INSERCION ---*/
         for (int i = 0; i < 4; i++) {
@@ -219,7 +227,6 @@ public class ControlBD {
             refe.setId_referencia(referenceId[i]);
             insertar(refe);
 
-
             //tabla GradoEspecializacion
 
             GradoEspecializacion grade=new GradoEspecializacion();
@@ -228,6 +235,20 @@ public class ControlBD {
             grade.setId_institutoEstudio(gradoEspeIdInsti[i]);
             grade.setDuracion_especializacion(gradoEspeDuration[i]);
             insertar(grade);
+            //tabla oferta
+            OfertaLaboral oferta =new OfertaLaboral();
+            oferta.setIdOL(ofertaIdTodos[i]);
+            oferta.setIdEmp(ofertaIdTodos[i]);
+            oferta.setIdCar(ofertaIdTodos[i]);
+            oferta.setFechaP(ofertaFechaPubli[i]);
+            oferta.setFechaX(ofertaFechaExpi[i]);
+            insertar(oferta);
+
+            InstitucionEducacion insti = new InstitucionEducacion();
+            insti.setIdIE(institutoId[i]);
+            insti.setNombreIE(institutoNom[i]);
+            insti.setDeptoIE(institutoDepart[i]);
+            insertarIE(insti);
 
 
         }//fin for
@@ -585,6 +606,7 @@ public class ControlBD {
 
         return ids;
     }
+
     public List<String> recuperarEmpresa(){
         List<String> idem=new ArrayList<String>();
         Cursor cursor=db.rawQuery("Select ID_EMPRESA from EMPRESA",null);
@@ -605,7 +627,8 @@ public class ControlBD {
 
     public List<String> recuperarOferta(){
         List<String> idem=new ArrayList<String>();
-        Cursor cursor =db.query("cargo",camposCargo,null,null,null,null,null);//para probar esta con la tabla cargo , cambiar a la tabla ofertalaboraL  despues
+        //Cursor cursor =db.query("cargo",camposCargo,null,null,null,null,null);//para probar esta con la tabla cargo , cambiar a la tabla ofertalaboraL  despues
+        Cursor cursor=db.rawQuery("Select ID_OFERTALABORAL from OFERTALABORAL",null);
         if(cursor.moveToFirst()){
             do{
                 idem.add(cursor.getString(0));
@@ -649,7 +672,7 @@ public class ControlBD {
 
         String regDelete="Referencias Eliminadas= ";
         int cont=0;
-        cont=db.delete("REFERENCIA","ID_REFERENCIA='"+referencia.getId_referencia()+"'",null);
+        cont=db.delete("REFERENCIA","ID_REFERENCIA='"+referencia.getId_referencia()+"'  and ID_EMPLEADO= '"+referencia.getId_empleado()+"'",null);
         return regDelete+=cont;
 
         }
@@ -673,7 +696,11 @@ public class ControlBD {
 
     public Referencia consultarReferencia(String idReferencia,String idEmpelado){
         String[] id={idReferencia,idEmpelado};
+
         Cursor cursor=db.query("REFERENCIA",camposReferencia,"ID_REFERENCIA= ? and ID_EMPLEADO= ?",id,null,null,null);
+
+
+
 
         if(cursor.moveToFirst()){
             Referencia referencia=new Referencia();

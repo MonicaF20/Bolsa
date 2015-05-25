@@ -1,4 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+
 <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
@@ -61,4 +67,24 @@
             android:text="@string/limpiar" />
     </TableRow>
 
+    <TableRow>
+
+        <TextView
+            android:padding="10px"/>
+    </TableRow>
+    <TableRow>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/autorEduardo"
+            android:id="@+id/autorEduardo"
+            android:layout_centerHorizontal="true"
+            android:textAlignment="center"
+            android:textColor="#ff4d66ba"
+            android:theme="@android:style/Animation"
+            android:textSize="22dp" />
+    </TableRow>
+
 </TableLayout>
+    </ScrollView>

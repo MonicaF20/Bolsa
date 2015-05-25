@@ -150,9 +150,13 @@ public class OLInsertarActivity extends Activity {
         return ok;
     }
     public void helpEmp(View v){
-        tostar("Activity EMPRESACONSULTAR no existe",1);
-        //Intent nueva = new Intent(this,fia.ues.sv.bolsatrabajo.EmpleadoConsultarActivity.class);
-        //startActivity(nueva);
+        try {
+            Intent nueva = new Intent(this,EmpresaConsultarActivity.class);
+            startActivity(nueva);
+        } catch (Exception e) {
+            e.printStackTrace();
+            tostar("Activity EMPRESACONSULTAR no existe",1);
+        }
     }
     public void helpCar(View v){
         Intent nueva = new Intent(this,CargoConsultarActivity.class);

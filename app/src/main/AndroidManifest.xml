@@ -197,6 +197,10 @@
             android:label="@string/title_activity_oferta_laboral" >
         </activity>
         <!-- FIN RG12001 -->
+        <activity
+            android:name=".EmpresaConsultarActivity"
+            android:label="@string/title_activity_empresa_consultar" >
+        </activity>
     </application>
 
 </manifest>
