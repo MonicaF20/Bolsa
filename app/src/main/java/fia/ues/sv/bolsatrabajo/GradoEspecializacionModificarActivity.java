@@ -33,10 +33,18 @@ public class GradoEspecializacionModificarActivity extends ActionBarActivity {
         especializacion.setDuracion_especializacion(Integer.parseInt(editDuracionEspec.getText().toString()));
         especializacion.setNombre_especializacion(editNombreEspecializacion.getText().toString());
 
-        helper.abrir();
-        String estate=helper.modificar(especializacion);
-        helper.cerrar();
-        Toast.makeText(this, estate, Toast.LENGTH_SHORT).show();
+        //if(helper.verificarIntegridad(especializacion,4)){
+
+
+            helper.abrir();
+            String estate=helper.modificar(especializacion);
+            helper.cerrar();
+            Toast.makeText(this, estate, Toast.LENGTH_SHORT).show();
+        /*}
+
+        else {
+            Toast.makeText(this, "No existe el ese instituto", Toast.LENGTH_SHORT).show();
+        }*/
     }
 
    public void limpiarModificarGrado(View view){

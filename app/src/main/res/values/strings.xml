@@ -174,11 +174,13 @@
         <item>Usulután</item>
     </string-array>
 
+    
     <!--fin RG12001-->
 
    
-
+   
     <string name="actualizar">Actualizar</string>
+    
     <string name="autorEduardo">Eduardo Rafael ®</string>
     <string name="title_activity_empresa_consultar">EmpresaConsultarActivity</string>
 </resources>
