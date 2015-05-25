@@ -15,7 +15,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Tabla Referencia"
+        android:text="@string/tvTablaReferencia"
         android:id="@+id/TVtablaReferencia"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"

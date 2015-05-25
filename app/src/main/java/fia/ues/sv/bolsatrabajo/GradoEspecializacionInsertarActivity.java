@@ -35,9 +35,13 @@ public class GradoEspecializacionInsertarActivity extends ActionBarActivity {
             Toast.makeText(this, "Debe ingresar El Id de la Especializacion", Toast.LENGTH_SHORT).show();
         }else{
             GradoEspecializacion especializacion=new GradoEspecializacion(idEspec,idInstituto,idDuracion,NomEspec);
-            helper.abrir();
-            String regInsert=helper.insertar(especializacion);
-            Toast.makeText(this,regInsert,Toast.LENGTH_SHORT).show();
+           // if(helper.verificarIntegridad(especializacion,2)){
+                helper.abrir();
+                String regInsert=helper.insertar(especializacion);
+                Toast.makeText(this,regInsert,Toast.LENGTH_SHORT).show();
+            //}
+            
+
         }
 
     }

@@ -770,7 +770,7 @@ public class ControlBD {
 
         switch (relacion) {
             case 1: {
-                //Verificar que al insertar una relacion, exista el empleado y la empresa de referencia y ademas que no exista esa referencia
+                //Verificar que al insertar una referencia, exista el empleado y la empresa de referencia y ademas que no exista esa referencia
                 Referencia referencia=(Referencia)dato;
                 String id[]={String.valueOf(referencia.getId_empleado())};
                 String id2[]={String.valueOf(referencia.getId_empresa())};
@@ -806,11 +806,14 @@ public class ControlBD {
             {
                 //verificar que al actualizar la Referencia exista y el empleado este asociado a esa referencia
                 Referencia referencia=(Referencia)dato;
+                System.out.println(referencia.getId_empleado());
                 String id[]={String.valueOf(referencia.getId_empleado())};
                 String id2[]={String.valueOf(referencia.getId_referencia())};
 
-                Cursor cursor1=db.query("REFERENCIA",null,"ID_EMPLEADO=?",id,null,null,null);
-                Cursor cursor2=db.query("REFERENCIA",null,"ID_REFERENCIA=?",id2,null,null,null);
+                Cursor cursor1=db.query("REFERENCIA",null,"ID_EMPLEADO= '"+referencia.getId_empleado()+"'",null,null,null,null);
+
+
+                Cursor cursor2=db.query("REFERENCIA",camposReferencia,"ID_REFERENCIA=?",id2,null,null,null);
 
                 if(cursor1.moveToFirst()&cursor2.moveToFirst()){ //aqui solo unse un "&"
                     return true;
@@ -829,6 +832,7 @@ public class ControlBD {
 
 
                 Cursor cursor1=db.query("INSTITUTOESTUDIO",null,"ID_INSTITUTOESTUDIO=?",id,null,null,null);
+
 
 
                 if(cursor1.moveToFirst()){ //aqui solo unse un "&"
