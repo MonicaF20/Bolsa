@@ -42,32 +42,45 @@ public class EmpleadoInsertarActivity extends Activity {
         String direccion=editDireccionEmpleado.getText().toString();
         String telefono=editTelefonoEmpleado.getText().toString();
         String regInsertado;
-         if(nombre ==null || dui==null || edad ==null || direccion ==null || telefono ==null
+         if(nombre.length()==0 || dui.length()==0 || edad.length()==0 || direccion.length()==0 || telefono.length()==0
                  || (radio_femenino.isChecked()== false && radio_masculino.isChecked()==false))
 
          { Toast.makeText(this,"INGRESE TODOS LOS DATOS",Toast.LENGTH_SHORT).show();}
+
         else {
-             Empleado empleado = new Empleado();
-             helper.abrir();
-             //int idL = helper.buscarId() + 1;
-             //empleado.setId(idL);
-             empleado.setNombre_empleado(nombre);
-             empleado.setDui_empleado(Integer.parseInt(dui));
-             if (radio_femenino.isChecked()) {
-                 empleado.setSexo_empleado("F");
-             } else {
-                 empleado.setSexo_empleado("M");
-             }
-             empleado.setEdad_empleado(Integer.parseInt(edad));
-             empleado.setDireccion_empleado(direccion);
-             empleado.setTelefono_empleado(Integer.parseInt(telefono));
-             empleado.setCantAplicaciones_empleado(0);
-             empleado.setCantReferencias_empleado(0);
-             //helper.abrir();
-             regInsertado = helper.insertarEmpleado(empleado);
-             helper.cerrar();
-             Toast.makeText(this, regInsertado, Toast.LENGTH_LONG).show();
-         }//fin del else
+             if (Integer.parseInt(edad) < 18)
+                 {
+                     Toast.makeText(this, "USTED DEBE SER MAYOR DE EDAD", Toast.LENGTH_SHORT).show();
+                 }else{
+                     if (dui.length()<9) {
+                      Toast.makeText(this, "DUI INVALIDO,SON 9 DIGITOS", Toast.LENGTH_SHORT).show();
+                     } else {
+                         if (telefono.length()<8) {
+                             Toast.makeText(this, "TELEFONO INVALIDO,SON 8 DIGITOS", Toast.LENGTH_SHORT).show();
+                         } else{
+                             Empleado empleado = new Empleado();
+                             helper.abrir();
+                             //int idL = helper.buscarId() + 1;
+                             //empleado.setId(idL);
+                             empleado.setNombre_empleado(nombre);
+                             empleado.setDui_empleado(Integer.parseInt(dui));
+                             if (radio_femenino.isChecked()) {
+                                 empleado.setSexo_empleado("F");
+                             } else {
+                                 empleado.setSexo_empleado("M");
+                             }
+                             empleado.setEdad_empleado(Integer.parseInt(edad));
+                             empleado.setDireccion_empleado(direccion);
+                             empleado.setTelefono_empleado(Integer.parseInt(telefono));
+                             empleado.setCantAplicaciones_empleado(0);
+                             empleado.setCantReferencias_empleado(0);
+                             //helper.abrir();
+                             regInsertado = helper.insertarEmpleado(empleado);
+                             helper.cerrar();
+                             Toast.makeText(this, regInsertado, Toast.LENGTH_LONG).show();
+                         }//fin del else
+                     }
+             }}
 
     }
 

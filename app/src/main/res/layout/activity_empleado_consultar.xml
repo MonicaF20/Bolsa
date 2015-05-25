@@ -1,7 +1,8 @@
 <ScrollView
     android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    android:layout_height="fill_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="#339999">
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
@@ -14,7 +15,8 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textStyle="bold"
-        android:id="@+id/textView10" />
+        android:id="@+id/textView10"
+        android:textColor="#191970"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -33,20 +35,26 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:weightSum="1">
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/consultar"
             android:id="@+id/buttonConsultarEmpleado"
-            android:onClick="consultarEmpleado"/>
+            android:onClick="consultarEmpleado"
+            android:textColor="#191970"
+            android:background="#33CC99"
+            android:layout_weight="0.20" />
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/limpiar"
             android:id="@+id/buttonLimpiarEmpleado"
-            android:onClick="limpiarConsulta"/>
+            android:onClick="limpiarConsulta"
+            android:textColor="#191970"
+            android:background="#33CC99"/>
 
     </LinearLayout>
 

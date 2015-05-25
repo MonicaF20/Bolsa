@@ -1,7 +1,8 @@
 <ScrollView
     android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    android:layout_height="fill_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="#339999">
 
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -13,13 +14,17 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="fia.ues.sv.bolsatrabajo.EmpleadoActualizarActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="#339999"
+    >
     <TextView android:text="ACTUALIZAR EMPLEADO"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textStyle="bold"
-        android:id="@+id/textView11" />
+        android:id="@+id/textView11"
+        android:textColor="#191970"
+        />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -43,6 +48,9 @@
         android:text="@string/modificarEmpleado"
         android:id="@+id/buttonModificarEmpleado"
         android:onClick="verificarEmpleado"
+        android:textColor="#191970"
+        android:background="#33CC99"
+
         />
     </LinearLayout>
 
@@ -124,11 +132,14 @@
         android:layout_height="wrap_content">
     <Button
         android:id="@+id/botonActualizar"
-        android:layout_width="wrap_content"
+        android:layout_width="159dp"
         android:layout_height="wrap_content"
         android:text="@string/actualizarDatos"
         android:onClick="actualizarEmpleado"
-        android:enabled="false" />
+        android:enabled="false"
+        android:textColor="#191970"
+        android:background="#33CC99"/>
+
     <Button
 
         android:layout_width="wrap_content"
@@ -136,6 +147,8 @@
         android:text="@string/limpiar"
         android:id="@+id/limpiarActualizar"
         android:onClick="limpiarActualizar"
+        android:textColor="#191970"
+        android:background="#33CC99"
          />
 
     </LinearLayout>

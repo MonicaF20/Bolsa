@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView
     android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    android:layout_height="fill_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:fillViewport="true"
+    android:id="@+id/scroll1">
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 
     android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#339999">
     <!--<TableRow>
         <TextView android:text="@string/idEmpleado"
             android:layout_width="wrap_content"
@@ -22,7 +25,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        android:textColor="#191970"/>
 
         <TextView android:text="@string/nombreEmpleado"
             android:layout_width="wrap_content"
@@ -69,7 +73,8 @@
             android:layout_height="wrap_content"
             android:layout_width="fill_parent"
             android:inputType="number"
-            android:maxLength="2"/>
+            android:maxLength="2"
+            />
 
         <TextView
 
@@ -131,7 +136,9 @@
             android:layout_height="wrap_content"
             android:text="@string/insertar"
             android:id="@+id/buttonInsertarEmpleado"
-             android:onClick="insertarEmpleado"/>
+             android:onClick="insertarEmpleado"
+            android:textColor="#191970"
+            android:background="#33CC99"/>
 
         <Button
             android:layout_width="wrap_content"
@@ -139,7 +146,9 @@
             android:text="@string/limpiar"
             android:id="@+id/buttonLimpiarEmpleado"
             android:textAlignment="center"
-            android:onClick="limpiarEmpleado" />
+            android:onClick="limpiarEmpleado"
+            android:textColor="#191970"
+            android:background="#33CC99"/>
     </TableRow>
 </TableLayout>
 <TextView android:layout_height="wrap_content"

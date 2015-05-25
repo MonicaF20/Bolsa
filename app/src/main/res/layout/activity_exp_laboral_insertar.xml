@@ -1,21 +1,26 @@
 <ScrollView
     android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    android:layout_height="fill_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:fillViewport="true"
+    android:id="@+id/scroll2">
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:layout_height="fill_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="fia.ues.sv.bolsatrabajo.ExpLaboralInsertarActivity">
+    tools:context="fia.ues.sv.bolsatrabajo.ExpLaboralInsertarActivity"
+    android:background="#339999">
     <TextView android:text="NUEVA EXPERIENCIA LABORAL"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textStyle="bold"
-        android:id="@+id/textView11" />
+        android:id="@+id/textView11"
+        android:textColor="#191970"
+        />
     <TextView android:text="@string/idEmpleadoExpLab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -48,7 +53,8 @@
         android:inputType="number"
         android:layout_below="@+id/textidEmpleadoEL"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        />
 
     <Spinner
         android:layout_width="wrap_content"
@@ -56,7 +62,10 @@
         android:id="@+id/spinnerIdEmpresa"
         android:layout_below="@+id/textidEmpresaEL"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:textColor="#191970"
+        android:layout_alignRight="@+id/textidEmpleadoEL"
+        android:layout_alignEnd="@+id/textidEmpleadoEL" />
 
     <Spinner
         android:layout_width="wrap_content"
@@ -65,7 +74,9 @@
 
         android:layout_below="@+id/textidCargoEL"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/spinnerIdEmpresa"
+        android:layout_alignEnd="@+id/spinnerIdEmpresa" />
 
     <Button
         android:layout_width="wrap_content"
@@ -75,7 +86,9 @@
         android:onClick="insertarExpLab"
         android:layout_below="@+id/duracionExpLab"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:textColor="#191970"
+        android:background="#33CC99"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -104,6 +117,30 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ver Nombre "
+        android:id="@+id/buttonEmpresaEL"
+        android:textColor="#191970"
+        android:background="#33CC99"
+        android:onClick="obtenerNombreEmpresa"
+        android:layout_alignTop="@+id/spinnerIdEmpresa"
+        android:layout_alignRight="@+id/idEmpleadoEL"
+        android:layout_alignEnd="@+id/idEmpleadoEL" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ver Nombre"
+        android:id="@+id/buttonCargoEL"
+        android:textColor="#191970"
+        android:background="#33CC99"
+        android:onClick="obtenerNombreCargo"
+        android:layout_alignTop="@+id/spinnerIdCargo"
+        android:layout_alignRight="@+id/idEmpleadoEL"
+        android:layout_alignEnd="@+id/idEmpleadoEL" />
 
 </RelativeLayout>
 </ScrollView>

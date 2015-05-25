@@ -22,7 +22,7 @@ public class EmpleadoActivity extends ListActivity {
         //setContentView(R.layout.activity_empleado);
         setListAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,menu));
         ListView listView = getListView();
-        listView.setBackgroundColor(Color.parseColor("#CC9999"));
+        listView.setBackgroundColor(Color.parseColor("#33CC99"));
         ArrayAdapter<String> adapter= new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,menu);
         setListAdapter(adapter);
     }

@@ -56,23 +56,42 @@ public class EmpleadoActualizarActivity extends Activity {
         }
     }
     public void actualizarEmpleado(View v) {
-
-            Empleado empleado = new Empleado();
-            empleado.setId(Integer.parseInt(editIdEmpleado.getText().toString()));
-            empleado.setNombre_empleado(editNombreEmpleado.getText().toString());
-            empleado.setDui_empleado(Integer.parseInt(editDuiEmpleado.getText().toString()));
-            empleado.setSexo_empleado(editSexoEmpleado.getText().toString());
-            empleado.setEdad_empleado(Integer.parseInt(editEdadEmpleado.getText().toString()));
-            empleado.setDireccion_empleado(editDireccionEmpleado.getText().toString());
-            empleado.setTelefono_empleado(Integer.parseInt(editTelefonoEmpleado.getText().toString()));
-            helper.abrir();
-            String estado = helper.actualizarEmpleado(empleado);
-            helper.cerrar();
-            Toast.makeText(this, estado, Toast.LENGTH_LONG).show();
-
-
+        String nombre = editNombreEmpleado.getText().toString();
+        String dui = editDuiEmpleado.getText().toString();
+        String direccion = editDireccionEmpleado.getText().toString();
+        String edad = editEdadEmpleado.getText().toString();
+        String telefono = editTelefonoEmpleado.getText().toString();
+        String sexo = editSexoEmpleado.getText().toString();
+        if (nombre.length() == 0 || dui.length() == 0 || direccion.length() == 0 || edad.length() == 0 ||
+                telefono.length() == 0 || sexo.length() == 0) {
+            Toast.makeText(this, "Debe ingresar todos los campos", Toast.LENGTH_LONG).show();
+        } else {
+            if (Integer.parseInt(edad) < 18) {
+                Toast.makeText(this, "USTED DEBE SER MAYOR DE EDAD", Toast.LENGTH_SHORT).show();
+            } else {
+                if (dui.length() < 9) {
+                    Toast.makeText(this, "DUI INVALIDO,SON 9 DIGITOS", Toast.LENGTH_SHORT).show();
+                } else {
+                    if (telefono.length() < 8) {
+                        Toast.makeText(this, "TELEFONO INVALIDO,SON 8 DIGITOS", Toast.LENGTH_SHORT).show();
+                    } else {
+                            Empleado empleado = new Empleado();
+                            empleado.setId(Integer.parseInt(editIdEmpleado.getText().toString()));
+                            empleado.setNombre_empleado(editNombreEmpleado.getText().toString());
+                            empleado.setDui_empleado(Integer.parseInt(editDuiEmpleado.getText().toString()));
+                            empleado.setSexo_empleado(editSexoEmpleado.getText().toString());
+                            empleado.setEdad_empleado(Integer.parseInt(editEdadEmpleado.getText().toString()));
+                            empleado.setDireccion_empleado(editDireccionEmpleado.getText().toString());
+                            empleado.setTelefono_empleado(Integer.parseInt(editTelefonoEmpleado.getText().toString()));
+                            helper.abrir();
+                            String estado = helper.actualizarEmpleado(empleado);
+                            helper.cerrar();
+                            Toast.makeText(this, estado, Toast.LENGTH_LONG).show();
+                        }//FIN ELSE DE LA ACTUALIZACION
+                    }
+                }
+            }
         }
-
 
 
     public void limpiarActualizar(View v){

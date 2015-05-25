@@ -4,14 +4,16 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="fia.ues.sv.bolsatrabajo.ExpLaboralConsultarActivity">
+    tools:context="fia.ues.sv.bolsatrabajo.ExpLaboralConsultarActivity"
+    android:background="#339999">
 
     <TextView android:text="CONSULTAR EXPERIENCIA LABORAL"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textStyle="bold"
-        android:id="@+id/textView12" />
+        android:id="@+id/textView12"
+        android:textColor="#191970"/>
 
         <EditText
             android:layout_width="wrap_content"
@@ -60,7 +62,11 @@
         android:layout_below="@+id/idEmpleadoELConsultar"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:onClick="consultarEL"/>
+        android:onClick="consultarEL"
+        android:textColor="#191970"
+        android:background="#33CC99"
+        android:layout_alignRight="@+id/textView3"
+        android:layout_alignEnd="@+id/textView3" />
 
     <Button
         android:layout_width="wrap_content"
@@ -70,7 +76,9 @@
         android:onClick="limpiarEL"
         android:layout_below="@+id/idEmpleadoELConsultar"
         android:layout_toRightOf="@+id/buttonConsultarEL"
-        android:layout_toEndOf="@+id/buttonConsultarEL" />
+        android:layout_toEndOf="@+id/buttonConsultarEL"
+        android:textColor="#191970"
+        android:background="#33CC99"/>
 
     <TextView
         android:layout_width="wrap_content"

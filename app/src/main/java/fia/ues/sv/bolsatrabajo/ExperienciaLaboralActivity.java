@@ -20,7 +20,7 @@ public class ExperienciaLaboralActivity extends ListActivity {
         super.onCreate(savedInstanceState);
         // setContentView(R.layout.activity_experiencia_laboral);
         ListView listView = getListView();
-        listView.setBackgroundColor(Color.parseColor("#CC9999"));
+        listView.setBackgroundColor(Color.parseColor("#33CC99"));
         setListAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, menu));
 
     }

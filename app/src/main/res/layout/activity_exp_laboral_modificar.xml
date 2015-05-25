@@ -1,7 +1,8 @@
 <ScrollView
     android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    android:layout_height="fill_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="#339999">
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
@@ -15,7 +16,8 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textStyle="bold"
-        android:id="@+id/textView12" />
+        android:id="@+id/textView12"
+        android:textColor="#191970"/>
 
     <TextView  android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -119,6 +121,8 @@
         android:enabled="false"
         android:onClick="actualizarEL"
         android:layout_below="@+id/duracionELModificar"
+        android:textColor="#191970"
+        android:background="#33CC99"
         />
     <TextView android:layout_height="wrap_content"
         android:layout_width="wrap_content"
@@ -137,7 +141,9 @@
         android:onClick="modificarEL"
         android:layout_below="@+id/idEmpleadoELModificar"
         android:layout_alignRight="@+id/textView4"
-        android:layout_alignEnd="@+id/textView4" />
+        android:layout_alignEnd="@+id/textView4"
+        android:textColor="#191970"
+        android:background="#33CC99"/>
 
     <Button
         android:layout_width="wrap_content"
@@ -148,7 +154,9 @@
         android:layout_toRightOf="@+id/buttonModificarExpLab"
         android:layout_toEndOf="@+id/buttonModificarExpLab"
         android:layout_above="@+id/textView5"
-        android:onClick="limpiarModificarEL"/>
+        android:onClick="limpiarModificarEL"
+        android:textColor="#191970"
+        android:background="#33CC99"/>
         <!--android:layout_alignBottom="@+id/button"
         android:layout_toRightOf="@+id/button"
         android:layout_toEndOf="@+id/button"

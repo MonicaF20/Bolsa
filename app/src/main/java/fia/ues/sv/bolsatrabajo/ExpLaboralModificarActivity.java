@@ -10,6 +10,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class ExpLaboralModificarActivity extends Activity {
     EditText idExpLabModificar;
@@ -74,24 +77,41 @@ public class ExpLaboralModificarActivity extends Activity {
         }
 
     }
-    public void actualizarEL(View v){
-        ExperienciaLaboral el= new ExperienciaLaboral();
-        String idEL=idExpLabModificar.getText().toString();
-        String idEmpEL=idEmpleadoELModificar.getText().toString();
-        String idEmpresaEL=idEmpresaELModificar.getText().toString();
-        String idCarEL=idCargoELModificar.getText().toString();
-        String duracEL=duracionELModificar.getText().toString();
-        el.setIdExpLaboral(Integer.valueOf(idEL));
-        el.setIdEmpleado(Integer.valueOf(idEmpEL));
-        el.setIdEmpresa(Integer.valueOf(idEmpresaEL));
-        el.setIdCargo(Integer.valueOf(idCarEL));
-        el.setDuracionExpLaboral(Integer.valueOf(duracEL));
-        helper.abrir();
-        String res=helper.actualizarEL(el);
-        helper.cerrar();
-        Toast.makeText(this,res,Toast.LENGTH_LONG).show();
-
+    public void actualizarEL(View v) {
+        String listE;
+        String listC;
+        if (idCargoELModificar.getText().toString().length() > 0 &&
+                idEmpresaELModificar.getText().toString().length() > 0 &&
+                duracionELModificar.getText().toString().length() > 0) {
+            ExperienciaLaboral el = new ExperienciaLaboral();
+            String idEL = idExpLabModificar.getText().toString();
+            String idEmpEL = idEmpleadoELModificar.getText().toString();
+            String idEmpresaEL = idEmpresaELModificar.getText().toString();
+            String idCarEL = idCargoELModificar.getText().toString();
+            String duracEL = duracionELModificar.getText().toString();
+            helper.abrir();
+            int hayE = helper.verificarExistenciaE(idEmpresaEL);
+            int hayC = helper.verificarExistenciaC(idCarEL);
+            helper.cerrar();
+            if (hayE == 1 && hayC == 1) {
+                el.setIdExpLaboral(Integer.valueOf(idEL));
+                el.setIdEmpleado(Integer.valueOf(idEmpEL));
+                el.setIdEmpresa(Integer.valueOf(idEmpresaEL));
+                el.setIdCargo(Integer.valueOf(idCarEL));
+                el.setDuracionExpLaboral(Integer.valueOf(duracEL));
+                helper.abrir();
+                String res = helper.actualizarEL(el);
+                helper.cerrar();
+                Toast.makeText(this, res, Toast.LENGTH_LONG).show();
+            } else {
+                Toast.makeText(this, "ID INVALIDO ", Toast.LENGTH_LONG).show();
+            }
         }
+            else{
+                Toast.makeText(this, "Ingrese todos los campos ", Toast.LENGTH_LONG).show();
+            }
+
+    }
 
 
     public void limpiarModificarEL(View v){

@@ -1,6 +1,7 @@
 package fia.ues.sv.bolsatrabajo;
 
 import android.app.Activity;
+import android.database.Cursor;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -27,6 +28,8 @@ public class ExpLaboralInsertarActivity extends Activity implements AdapterView.
     String resultadoCargo;
     EditText idEmpleadoEL;
     EditText duracionExpLab;
+    Button buttonCargoEL;
+    Button buttonEmpresaEL;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,11 +41,13 @@ public class ExpLaboralInsertarActivity extends Activity implements AdapterView.
         buttonInsertarEL=(Button) findViewById(R.id.buttonInsertarEL);
         idEmpleadoEL = (EditText)findViewById(R.id.idEmpleadoEL);
         duracionExpLab=(EditText)findViewById(R.id.duracionExpLab);
+        buttonCargoEL=(Button)findViewById(R.id.buttonCargoEL);
+        buttonEmpresaEL=(Button)findViewById(R.id.buttonEmpresaEL);
         List<String> idEmpresas =  new ArrayList<String>();
         List<String> idCargo= new ArrayList<String>();
         helper.abrir();
-        helper.insertarEmpresa();
-        helper.insertarCargo();
+        //helper.insertarEmpresa();
+        //helper.insertarCargo();
         idEmpresas = helper.obtenerIdEmpresas();
         idCargo=helper.obtenerIdCargo();
         helper.cerrar();
@@ -85,19 +90,22 @@ public class ExpLaboralInsertarActivity extends Activity implements AdapterView.
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
         switch (adapterView.getId())
         {
             case R.id.spinnerIdEmpresa:
 
                 resultadoEmpresa=adapterView.getItemAtPosition(i).toString();
-               // Toast.makeText(this, "Seleccionado " + resultadoEmpresa, Toast.LENGTH_LONG).show();
-
+                //buscarNombreE(resultadoEmpresa);
                 break;
 
             case R.id.spinnerIdCargo:
 
                 resultadoCargo=adapterView.getItemAtPosition(i).toString();
-                 //Toast.makeText(this,"Seleccionado "+ resultadoCargo, Toast.LENGTH_LONG).show();
+
+               // String nombreC=helper.recuperarNombreCargo(resultadoCargo);
+
+               // Toast.makeText(this,nombreC, Toast.LENGTH_LONG).show();
 
                 break;
         }
@@ -117,15 +125,24 @@ public class ExpLaboralInsertarActivity extends Activity implements AdapterView.
         Empleado empleado=helper.consultarEmpleado(idEmpleadoEL.getText().toString());
         if(empleado==null)
         {Toast.makeText(this,"EL EMPLEADO "+idEmpleadoEL.getText().toString()+" NO EXISTE",Toast.LENGTH_LONG).show();
-
         }
-        else{
-            if(duracionExpLab.getText().toString()==null)
-            {Toast.makeText(this,"INGRESE TODOS LOS DATOS",Toast.LENGTH_LONG).show();}
-            else
-            { res=helper.insertarExpLab(idEmpleadoEL.getText().toString(),resultadoEmpresa,resultadoCargo,duracionExpLab.getText().toString());
+        if(duracionExpLab.getText().toString().length()==0)
+        {Toast.makeText(this,"INGRESE TODOS LOS DATOS",Toast.LENGTH_LONG).show();}
+        else   {
+            res=helper.insertarExpLab(idEmpleadoEL.getText().toString(),resultadoEmpresa,resultadoCargo,duracionExpLab.getText().toString());
             Toast.makeText(this,res,Toast.LENGTH_LONG).show();}
-        }
-
+    helper.cerrar();
     }
+    public void obtenerNombreEmpresa(View v){
+        helper.abrir();
+        String res= helper.recuperarNombreEmpresa(resultadoEmpresa);
+        helper.cerrar();
+        Toast.makeText(this,res,Toast.LENGTH_LONG).show();}
+
+    public void obtenerNombreCargo(View v){
+        helper.abrir();
+        String res= helper.recuperarNombreCargo(resultadoCargo);
+        helper.cerrar();
+        Toast.makeText(this,res,Toast.LENGTH_LONG).show();}
+
 }

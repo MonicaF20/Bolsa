@@ -78,7 +78,35 @@ public class ControlBD {
             String sqlCreateInsEst="create table INSTITUTOESTUDIO(ID_INSTITUTOESTUDIO integer not null, NOMBRE_INSTITUTOESTUDIO varchar(100) not null, MUNICIPIO_INSTITUTOESTUDIO varchar(30) not null, DEPARTAMENTO_INSTITUTOESTUDIO varchar(30) not null, primary key (ID_INSTITUTOESTUDIO));";
             String sqlCreateOfeLab="create table OFERTALABORAL(ID_OFERTALABORAL integer not null, ID_EMPRESA integer not null, ID_CARGO integer not null, FECHAPUBLICACION_OFERTALABORAL varchar(30) not null, FECHAEXPIRACION_OFERTALABORAL varchar(30) not null, primary key (ID_OFERTALABORAL,ID_EMPRESA));";
             String sqlCreateRef="create table REFERENCIA(ID_REFERENCIA integer not null, ID_EMPLEADO integer, ID_EMPRESA integer, NOMBRE_REFERENCIA varchar(50) not null, TELEFONO_REFERENCIA varchar(10) not null, primary key (ID_REFERENCIA,ID_EMPLEADO));";
-           
+            String sqlTrigger=
+                    "CREATE TRIGGER fk_aplicacion BEFORE INSERT ON APLICACION FOR EACH ROW " +
+                            "BEGIN  SELECT CASE  WHEN((SELECT ID_EMPLEADO,ID_OFERTALABORAL FROM EMPLEADO,OFERTALABORAL WHERE ID_EMPLEADO= NEW.ID_EMPLEADO AND ID_OFERTALABORAL= NEW.ID_OFERTALABORAL) IS NULL)" +
+                            "    THEN RAISE(ABORT,'No existe empleado')" +
+                            "END;" ;
+            String sqlTrigger2="CREATE TRIGGER update_aplicacionesempleado AFTER INSERT ON APLICACION "+
+                    " WHEN NEW.ID_APLICACION >0  "
+                    + " BEGIN UPDATE EMPLEADO SET CANTAPLICACIONES_EMPLEADO=CANTAPLICACIONES_EMPLEADO+1 WHERE EMPLEADO.ID_EMPLEADO=NEW.ID_EMPLEADO;  END;";
+
+            String sqlTrigger3="CREATE TRIGGER fk_expLaboral  BEFORE INSERT ON EXPERIENCIALABORAL "+
+                    " FOR EACH ROW BEGIN SELECT CASE  WHEN (((SELECT ID_EMPLEADO FROM EMPLEADO WHERE  ID_EMPLEADO=NEW.ID_EMPLEADO) IS NULL )  "+
+                    " OR ( (SELECT ID_EMPRESA FROM EMPRESA WHERE  ID_EMPRESA=NEW.ID_EMPRESA) IS NULL)"+
+                    " OR((SELECT ID_CARGO FROM CARGO WHERE  ID_CARGO=NEW.ID_CARGO)IS NULL)  ) "
+                    +" THEN RAISE(ABORT, 'Error en la insercion de la Experiencia Laboral') END; END; ";
+
+            String sqlTrigger4="CREATE TRIGGER actualizar_cantReferencias AFTER INSERT ON REFERENCIA  WHEN NEW.ID_REFERENCIA >0 " +
+                    "BEGIN UPDATE  EMPLEADO SET CANTREFERENCIAS_EMPLEADO=CANTREFERENCIAS_EMPLEADO+1 WHERE EMPLEADO.ID_EMPLEADO= NEW.ID_EMPLEADO; "+
+                    " END";
+            String sqlTrigger5="CREATE TRIGGER fk_gradoEspecializacion_Instituto BEFORE INSERT ON gradoEspecializacion " +
+                    "FOR EACH ROW  BEGIN  SELECT CASE WHEN ((SELECT id_InstitutoEstudio FROM InstitutoEstudio WHERE id_InstitutoEstudio = NEW.id_InstitutoEstudio) IS NULL)"+
+                    "THEN RAISE(ABORT, 'No existe Ese Instituto') END; END;";
+            String sqlTrigger6="CREATE TRIGGER fk_Referencia_Empleado BEFORE INSERT ON Referencia FOR EACH ROW BEGIN SELECT CASE WHEN ((SELECT id_Empleado FROM Empleado WHERE id_Empleado = NEW.id_Empleado) IS NULL) THEN RAISE(ABORT, 'No existe Ese Empleado') END; END;";
+            String sqlTrigger7="CREATE TRIGGER fk_OfertaLaboral_Empresa BEFORE INSERT ON OFERTALABORAL FOR EACH ROW BEGIN "+
+                    "SELECT CASE WHEN ((SELECT ID_EMPRESA FROM EMPRESA WHERE ID_EMPRESA = NEW.ID_EMPRESA) IS NULL)"+
+                    "THEN RAISE(ABORT, 'Empresa no existe') END; END;";
+            String sqlTrigger8="CREATE TRIGGER update_cantOfertas_Empresa AFTER INSERT ON OFERTALABORAL WHEN NEW.ID_OFERTALABORAL>0"+
+                    "BEGIN UPDATE EMPRESA SET CANTOFERTAS_EMPRESA = CANTOFERTAS_EMPRESA+1 WHERE EMPRESA.ID_EMPRESA=NEW.ID_EMPRESA; END;";
+
+
             try{
                 db.execSQL(sqlCreateApl);
                 db.execSQL(sqlCreateCar);
@@ -90,6 +118,14 @@ public class ControlBD {
                 db.execSQL(sqlCreateInsEst);
                 db.execSQL(sqlCreateOfeLab);
                 db.execSQL(sqlCreateRef);
+                db.execSQL(sqlTrigger);
+                db.execSQL(sqlTrigger2);
+                db.execSQL(sqlTrigger3);
+                db.execSQL(sqlTrigger4);
+                db.execSQL(sqlTrigger5);
+                db.execSQL(sqlTrigger6);
+                db.execSQL(sqlTrigger7);
+                db.execSQL(sqlTrigger8);
             }catch (SQLException e){
                 e.printStackTrace();
             }
@@ -322,7 +358,35 @@ public class ControlBD {
         return lista;
 
     }
+    public String recuperarNombreEmpresa(String id){
+        String ids[]={id};
+        Cursor cursor=db.rawQuery("SELECT NOMBRE_EMPRESA FROM EMPRESA WHERE ID_EMPRESA =?",ids);
+        if(cursor.moveToFirst())
+        {return cursor.getString(0);}
+        else{ return "No pudo obtenerse el Nombre de la Empresa";}
 
+    }
+    public int verificarExistenciaE(String idE){
+        String ids[]={idE};
+        Cursor cursor=db.rawQuery("SELECT * FROM EMPRESA WHERE ID_EMPRESA =?",ids);
+        if(cursor.moveToFirst())
+        {return 1;}
+        else{ return 0;}}
+    public int verificarExistenciaC(String idE){
+        String ids[]={idE};
+        Cursor cursor=db.rawQuery("SELECT * FROM CARGO WHERE ID_CARGO =?",ids);
+        if(cursor.moveToFirst())
+        {return 1;}
+        else{ return 0;}}
+
+    public String recuperarNombreCargo(String idCargo){
+        String idC[]={idCargo};
+        Cursor cursor=db.rawQuery("SELECT NOMBRE_CARGO FROM CARGO WHERE ID_CARGO =?",idC);
+        if(cursor.moveToFirst())
+        {return cursor.getString(0);}
+        else{ return "No pudo obtenerse el Nombre del Cargo";}
+
+    }
     public List<String> obtenerIdCargo(){
         List<String> lista = new ArrayList<String>();
         Cursor cursor = db.rawQuery("SELECT ID_CARGO FROM CARGO", null);
